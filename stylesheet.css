@@ -10,10 +10,12 @@ div {
 
 body {
     background-color: #ffc3a0;
+    text-align: center;
 }
 
 #main-frame {
-
+    display: inline-block;
+    width: 100%;
 }
 
 .simple-transfer-card {
@@ -22,15 +24,15 @@ body {
     vertical-align: middle;
     border-top: 3px solid gray;
     border-bottom: 3px solid gray;
-    /*border-radius: 12px;*/
     background: white;
     width: 484px;
-    height: 320px;
     color: #545454;
     margin: auto;
     margin-top: 1px;
     margin-bottom: 1px;
     padding: 0px;
+
+    height: 320px;
 }
 
 .mini-transfer-card {
@@ -39,15 +41,15 @@ body {
     vertical-align: middle;
     border-top: 3px solid gray;
     border-bottom: 3px solid gray;
-    /*border-radius: 12px;*/
     background: white;
     width: 484px;
-    height: 170px;
     color: #545454;
     margin: auto;
     margin-top: 1px;
     margin-bottom: 1px;
     padding: 0px;
+
+    height: 170px;
 }
 
 .simple-deal-info {
@@ -96,9 +98,10 @@ body {
     vertical-align: middle;
     background: white;
     width: 360px;
-    height: 240px;
     color: #545454;
     margin: auto;
+
+    height: 240px;
 }
 
 .simple-player-card .photo-frame img {
@@ -139,11 +142,13 @@ body {
     vertical-align: middle;
     background: white;
     width: 360px;
-    height: 60px;
     color: #545454;
     margin: auto;
+
     margin-top: 15px;
     margin-bottom: 15px;
+
+    height: 60px;
 }
 
 .mini-player-card:hover {
@@ -156,8 +161,9 @@ body {
 
 .mini-player-card .description-frame {
     display: inline-block;
-    height: 90%;
-    margin-left: 10px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
 }
 
 .mini-player-card .description-frame h2 {

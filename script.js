@@ -1,5 +1,7 @@
 'use strict';
 
+var defaultSetting = 'mini';
+
 function main() {
     // for (var index = 0; index < players.length; index += 1) {
     //     drawPlayerCard('main-frame', index, players[index]);
@@ -10,10 +12,10 @@ function main() {
 }
 
 var players = [
-        new Player('LCK', '21', 'GK', '1993-08-30', '186', '78', 'https://www.busanipark.com/i_data/player/248_1.jpg'),    
-        new Player('LJH', '25', 'FW', '1991-06-24', '187', '76', 'https://www.busanipark.com/i_data/player/260_1.jpg'),    
-        new Player('KJK', '19', 'MF', '1997-02-24', '176', '66', 'https://www.busanipark.com/i_data/player/287_1.jpg'),
-        new Player('KHJ', '32', 'DF', '1993-12-13', '183', '74', 'https://www.busanipark.com/i_data/player/249_1.jpg')
+        new Player('이창근', '21', 'GK', '1993-08-30', '186', '78', 'https://www.busanipark.com/i_data/player/248_1.jpg'),    
+        new Player('이정협', '25', 'FW', '1991-06-24', '187', '76', 'https://www.busanipark.com/i_data/player/260_1.jpg'),    
+        new Player('김진규', '19', 'MF', '1997-02-24', '176', '66', 'https://www.busanipark.com/i_data/player/287_1.jpg'),
+        new Player('구현준', '32', 'DF', '1993-12-13', '183', '74', 'https://www.busanipark.com/i_data/player/249_1.jpg')
         ];
 
 var teams = [
@@ -22,7 +24,7 @@ var teams = [
         ];
 
 var deals = [
-        new Deal('transfer', '2,000,000,000 KRW', '2015-12-25', ['http://google.com'])
+        new Deal('rumour', 'transfer', '2B KRW', '2015-12-25', ['http://google.com'])
         ];
 
 function Player(name, backnumber, position, dob, height, weight, image) {
@@ -44,8 +46,9 @@ function Team(name, competition, image) {
     return team;
 }
 
-function Deal(dealType, fee, dateAdded, sources) {
+function Deal(rumourType, dealType, fee, dateAdded, sources) {
     var deal = {};
+    deal.rumourType = rumourType;
     deal.dealType = dealType;
     deal.fee = fee;
     deal.dateAdded = dateAdded;
@@ -59,12 +62,12 @@ function drawTransferCard() {
 
     content +=
         tagEditor('div', {
-            'class': 'simple-transfer-card',
+            'class': defaultSetting + '-transfer-card',
         }, [
             drawDealInfo(deals[0]),
-            drawTeamCard('simple-team', teams[0]),
+            drawTeamCard(defaultSetting + '-team', teams[0]),
             drawPlayerCard(0, players[1]),
-            drawTeamCard('simple-team',teams[1]),
+            drawTeamCard(defaultSetting + '-team',teams[1]),
             drawSources(deals[0])
         ]);
 
@@ -85,7 +88,7 @@ function drawDealInfo(deal) {
                         attribute === 'sources') {
                         continue;
                     }
-                    detail += attribute + ': ' + deal[attribute];
+                    detail += deal[attribute];
                     detail += ' / ';
                 }
                 detail += deal['dateAdded'];
@@ -139,12 +142,11 @@ function drawTeamCard(item, team) {
 function drawPlayerCard(cardID, player) {
     var content = '',
         frameID = makeFrameID('card', cardID),
-        image = player.image,
-        defaultSetting = 'simple-player-card';
+        image = player.image;
 
     content += 
         tagEditor('div', {
-            'class': defaultSetting,
+            'class': defaultSetting + '-player-card',
             'id': frameID
         },  [
             tagEditor('div', {
