@@ -8,6 +8,10 @@ div {
     overflow: hidden;
 }
 
+body {
+    background-color: #ffc3a0;
+}
+
 #main-frame {
 
 }
