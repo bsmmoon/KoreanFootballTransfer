@@ -20,52 +20,72 @@ p {
     display: block;
 }
 
-.main-frame {
+#main-frame {
 
 }
 
-.simple-card {
+.transfer-card {
     display: block;
     position: relative;
     vertical-align: middle;
-    border: 2px solid gray;
+    border: 4px solid gray;
+    background: white;
+    width: 484px;
+    height: 320px;
+    color: #545454;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0px;
+}
+
+.simple-team {
+    display: inline-block;
+    vertical-align: middle;
+    width: 60px;
+}
+
+.simple-player-card {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
     background: white;
     width: 360px;
     height: 240px;
     color: #545454;
     margin: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
 }
 
-.simple-card:hover {
+.simple-player-card:hover {
     border: 2px solid red;
 }
 
-.simple-card .photo-frame {
+.simple-player-card .photo-frame {
     display: inline-block;
     width: 40%;
     padding: 10px;
 }
 
-.simple-card .description-frame {
+.simple-player-card .description-frame {
     display: inline-block;
     height: 90%;
 }
 
-.simple-card .description-frame h3 {
+.simple-player-card .description-frame h3 {
     display: inline-block;
     max-height: 100%;
     max-width: 100%;
 }
 
-.simple-card .description-frame p {
+.simple-player-card .description-frame p {
     display: inline-block;
     max-height: 100%;
     max-width: 100%;
 }
 
-.mini-card {
+.mini-player-card {
     display: block;
     position: relative;
     vertical-align: middle;
@@ -79,27 +99,27 @@ p {
     margin-bottom: 15px;
 }
 
-.mini-card:hover {
+.mini-player-card:hover {
     border: 2px solid red;
 }
 
-.mini-card .photo-frame {
+.mini-player-card .photo-frame {
     display: none;
 }
 
-.mini-card .description-frame {
+.mini-player-card .description-frame {
     display: inline-block;
     height: 90%;
     margin-left: 10px;
 }
 
-.mini-card .description-frame h3 {
+.mini-player-card .description-frame h3 {
     display: inline-block;
     max-height: 100%;
     max-width: 100%;
 }
 
-.mini-card .description-frame p {
+.mini-player-card .description-frame p {
     display: none;
 }
 

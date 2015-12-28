@@ -7,6 +7,11 @@ var players = [
         new Player('KHJ', '32', 'DF', '1993-12-13', '183', '74', 'https://www.busanipark.com/i_data/player/249_1.jpg')
         ];
 
+var teams = [
+        new Team('Busan IPark', 'K League Challenge', 'http://www.kleague.com/images/club/club_b_K06.png'),
+        new Team('Jeonbuk Hyundai Motors', 'K League Classic', 'http://www.kleague.com/images/club/club_b_K05.png')
+        ];
+
 function Player(name, backnumber, position, dob, height, weight, image) {
     var player = {};
     player.name = name;
@@ -19,17 +24,60 @@ function Player(name, backnumber, position, dob, height, weight, image) {
     return player;
 }
 
-function main() {
-    for (var index = 0; index < players.length; index += 1) {
-        drawCard('players', index, players[index]);
-    }
+function Team(name, competition, image) {
+    var team = {};
+    team.name = name;
+    team.competition = competition;
+    team.image = image;
+    return team;
 }
 
-function drawCard(item, cardID, player) {
-    var frameID = makeFrameID('card', cardID),
+function main() {
+    // for (var index = 0; index < players.length; index += 1) {
+    //     drawPlayerCard('main-frame', index, players[index]);
+    // }
+    drawTransferCard();
+}
+
+function drawTransferCard() {
+    var content = '',
+        target = 'main-frame';
+
+    content +=
+        tagEditor('div', {
+            'class': 'transfer-card',
+        }, [
+            drawTeamCard('simple-team', teams[0]),
+            drawPlayerCard(0, players[1]),
+            drawTeamCard('simple-team',teams[1])
+        ]);
+
+    document.getElementById(target).innerHTML += content;
+}
+
+function drawTeamCard(item, team) {
+    var content = '',
+        image = team.image;
+
+    content +=
+        tagEditor('div', {
+            'class': item
+        },  [
+            tagEditor('img', {
+                'src': image,
+                'alt': 'HTML5',
+                'style': 'max-height: 100%; max-width: 100%;'
+            })
+        ]);
+
+    return content;
+}
+
+function drawPlayerCard(cardID, player) {
+    var content = '',
+        frameID = makeFrameID('card', cardID),
         image = player.image,
-        content = '',
-        defaultSetting = 'mini-card';
+        defaultSetting = 'simple-player-card';
 
     content += 
         tagEditor('div', {
@@ -56,14 +104,14 @@ function drawCard(item, cardID, player) {
             })
         ]);
 
-    document.getElementById(item).innerHTML += content;
+    return content;
 }
 
 function cardClick(card) {
-    if (card.className === 'simple-card') {
-        card.className = 'mini-card';
-    } else if (card.className === 'mini-card') {
-        card.className = 'simple-card';
+    if (card.className === 'simple-player-card') {
+        card.className = 'mini-player-card';
+    } else if (card.className === 'mini-player-card') {
+        card.className = 'simple-player-card';
     }
 }
 
