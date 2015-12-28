@@ -39,6 +39,12 @@ p {
     padding: 0px;
 }
 
+.simple-deal-info {
+    height: 40px;
+    border-bottom: 2px solid gray;
+    padding-left: 10px;
+}
+
 .simple-team {
     display: inline-block;
     vertical-align: middle;
@@ -58,14 +64,14 @@ p {
     margin: auto;
 }
 
-.simple-player-card:hover {
-    border: 2px solid red;
-}
-
 .simple-player-card .photo-frame {
     display: inline-block;
     width: 40%;
     padding: 10px;
+}
+
+.simple-player-card .card-cover:hover {
+    background: rgba(255,0,0,0.1);
 }
 
 .simple-player-card .description-frame {
