@@ -12,6 +12,10 @@ var teams = [
         new Team('Jeonbuk Hyundai Motors', 'K League Classic', 'http://www.kleague.com/images/club/club_b_K05.png')
         ];
 
+var deals = [
+        new Deal('transfer', '2,000,000,000 KRW', '2015-12-25')
+        ];
+
 function Player(name, backnumber, position, dob, height, weight, image) {
     var player = {};
     player.name = name;
@@ -32,6 +36,14 @@ function Team(name, competition, image) {
     return team;
 }
 
+function Deal(dealType, fee, dateAdded) {
+    var deal = {};
+    deal.dealType = dealType;
+    deal.fee = fee;
+    deal.dateAdded = dateAdded;
+    return deal;
+}
+
 function main() {
     // for (var index = 0; index < players.length; index += 1) {
     //     drawPlayerCard('main-frame', index, players[index]);
@@ -47,12 +59,39 @@ function drawTransferCard() {
         tagEditor('div', {
             'class': 'transfer-card',
         }, [
+            drawDealInfo(deals[0]),
             drawTeamCard('simple-team', teams[0]),
             drawPlayerCard(0, players[1]),
             drawTeamCard('simple-team',teams[1])
         ]);
 
     document.getElementById(target).innerHTML += content;
+}
+
+function drawDealInfo(deal) {
+    var content = '';
+
+    content +=
+        tagEditor('div', {
+            'class': 'simple-deal-info'
+        },  [
+            tagEditor('p', {}, [
+                function() {
+                    var detail = '';
+                    for (var attribute in deal) {
+                        if (attribute === 'dateAdded') {
+                            continue;
+                        }
+                        detail += attribute + ': ' + deal[attribute];
+                        detail += ' / ';
+                    }
+                    detail += deal['dateAdded'];
+                    return detail;
+                }()
+            ])
+        ]);
+
+    return content;
 }
 
 function drawTeamCard(item, team) {
@@ -123,11 +162,12 @@ function getPlayerProfile(player) {
         function() {
         var detail = '';
         for (var attribute in player) {
-            if (attribute !== 'name' &&
-                attribute !== 'image') {
-                detail += attribute + ': ' + player[attribute];
-                detail += '<br>';
+            if (attribute === 'name' ||
+                attribute === 'image') {
+                continue;
             }
+            detail += attribute + ': ' + player[attribute];
+            detail += '<br>';
         }
         return detail;}()
         ]);
