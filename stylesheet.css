@@ -15,7 +15,8 @@ body {
 
 #main-frame {
     display: inline-block;
-    width: 100%;
+    max-width: 480px;
+    width: 100%;    
 }
 
 .simple-transfer-card {
@@ -25,7 +26,7 @@ body {
     border-top: 3px solid gray;
     border-bottom: 3px solid gray;
     background: white;
-    width: 484px;
+    width: 100%;
     color: #545454;
     margin: auto;
     margin-top: 1px;
@@ -42,14 +43,14 @@ body {
     border-top: 3px solid gray;
     border-bottom: 3px solid gray;
     background: white;
-    width: 484px;
+    width: 100%;
     color: #545454;
     margin: auto;
     margin-top: 1px;
     margin-bottom: 1px;
     padding: 0px;
 
-    height: 170px;
+    height: 174px;
 }
 
 .simple-deal-info {

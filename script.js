@@ -3,9 +3,6 @@
 var defaultSetting = 'mini';
 
 function main() {
-    // for (var index = 0; index < players.length; index += 1) {
-    //     drawPlayerCard('main-frame', index, players[index]);
-    // }
     for (var index = 0; index < 20; index += 1) {
         drawTransferCard();
     }
