@@ -8,23 +8,27 @@ div {
     overflow: hidden;
 }
 
-img {
-    display: inline-block;
-}
-
-h2 {
-    display: block;
-}
-
-p {
-    display: block;
-}
-
 #main-frame {
 
 }
 
-.transfer-card {
+.simple-transfer-card {
+    display: block;
+    position: relative;
+    vertical-align: middle;
+    border: 3px solid gray;
+    border-radius: 12px;
+    background: white;
+    width: 484px;
+    height: 320px;
+    color: #545454;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0px;
+}
+
+.mini-transfer-card {
     display: block;
     position: relative;
     vertical-align: middle;
@@ -32,7 +36,7 @@ p {
     border-radius: 12px;
     background: white;
     width: 484px;
-    height: 320px;
+    height: 170px;
     color: #545454;
     margin: auto;
     margin-top: 15px;
@@ -69,12 +73,21 @@ p {
     max-width: 100%;
 }
 
+.mini-team {
+    display: inline-block;
+    vertical-align: middle;
+    width: 60px;
+}
+
+.mini-team img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 .simple-player-card {
     display: inline-block;
     position: relative;
     vertical-align: middle;
-    border-left: 2px solid gray;
-    border-right: 2px solid gray;
     background: white;
     width: 360px;
     height: 240px;
@@ -102,26 +115,25 @@ p {
     height: 90%;
 }
 
-.simple-player-card .description-frame h3 {
-    display: inline-block;
+.simple-player-card .description-frame h2 {
+    display: block;
     max-height: 100%;
     max-width: 100%;
 }
 
-.simple-player-card .description-frame p {
+.simple-player-card .description-frame div {
     display: inline-block;
     max-height: 100%;
     max-width: 100%;
 }
 
 .mini-player-card {
-    display: block;
+    display: inline-block;
     position: relative;
     vertical-align: middle;
-    border: 2px solid gray;
     background: white;
     width: 360px;
-    height: 80px;
+    height: 60px;
     color: #545454;
     margin: auto;
     margin-top: 15px;
@@ -129,7 +141,7 @@ p {
 }
 
 .mini-player-card:hover {
-    border: 2px solid red;
+    background: rgba(255,0,0,0.1);
 }
 
 .mini-player-card .photo-frame {
@@ -142,13 +154,13 @@ p {
     margin-left: 10px;
 }
 
-.mini-player-card .description-frame h3 {
-    display: inline-block;
+.mini-player-card .description-frame h2 {
+    display: block;
     max-height: 100%;
     max-width: 100%;
 }
 
-.mini-player-card .description-frame p {
+.mini-player-card .description-frame div {
     display: none;
 }
 

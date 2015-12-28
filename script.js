@@ -57,7 +57,7 @@ function drawTransferCard() {
 
     content +=
         tagEditor('div', {
-            'class': 'transfer-card',
+            'class': 'simple-transfer-card',
         }, [
             drawDealInfo(deals[0]),
             drawTeamCard('simple-team', teams[0]),
@@ -105,7 +105,8 @@ function drawSources(deal) {
             function() {
                 var detail = '';
                 detail += tagEditor('a', {
-                    'href': sources[0]
+                    'href': sources[0],
+                    'target': '_blank'
                 },  [
                     'Primary Source'
                 ]);
@@ -159,35 +160,46 @@ function drawPlayerCard(cardID, player) {
             ]),
             tagEditor('span', {
                 'class': 'card-cover',
-                'onmousedown': 'cardClick(this.parentNode)'
+                'onmousedown': 'makeCardSmaller(this.parentNode)'
             })
         ]);
 
     return content;
 }
 
-function cardClick(card) {
+function makeCardSmaller(card) {
+    var transferCard = card.parentNode,
+        teamFrom = card.previousSibling,
+        teamTo = card.nextSibling;
     if (card.className === 'simple-player-card') {
+        transferCard.className = 'mini-transfer-card'
         card.className = 'mini-player-card';
+        teamFrom.className = 'mini-team';
+        teamTo.className = 'mini-team';
     } else if (card.className === 'mini-player-card') {
+        transferCard.className = 'simple-transfer-card'
         card.className = 'simple-player-card';
+        teamFrom.className = 'simple-team';
+        teamTo.className = 'simple-team';
     }
 }
 
 function getPlayerProfile(player) {
     var out = tagEditor('h2', {},  [player.name]);
-    out += function() {
-        var detail = '';
-        for (var attribute in player) {
-            if (attribute === 'name' ||
-                attribute === 'image') {
-                continue;
+    out += tagEditor('div', {}, [
+        function() {
+            var detail = '';
+            for (var attribute in player) {
+                if (attribute === 'name' ||
+                    attribute === 'image') {
+                    continue;
+                }
+                detail += attribute + ': ' + player[attribute];
+                detail += '<br>';
             }
-            detail += attribute + ': ' + player[attribute];
-            detail += '<br>';
-        }
-        return detail;
-    }();
+            return detail;
+        }()
+    ]);
     console.log(out);
 
     return out;
