@@ -1,5 +1,14 @@
 'use strict';
 
+function main() {
+    // for (var index = 0; index < players.length; index += 1) {
+    //     drawPlayerCard('main-frame', index, players[index]);
+    // }
+    for (var index = 0; index < 20; index += 1) {
+        drawTransferCard();
+    }
+}
+
 var players = [
         new Player('LCK', '21', 'GK', '1993-08-30', '186', '78', 'https://www.busanipark.com/i_data/player/248_1.jpg'),    
         new Player('LJH', '25', 'FW', '1991-06-24', '187', '76', 'https://www.busanipark.com/i_data/player/260_1.jpg'),    
@@ -42,13 +51,6 @@ function Deal(dealType, fee, dateAdded, sources) {
     deal.dateAdded = dateAdded;
     deal.sources = sources;
     return deal;
-}
-
-function main() {
-    // for (var index = 0; index < players.length; index += 1) {
-    //     drawPlayerCard('main-frame', index, players[index]);
-    // }
-    drawTransferCard();
 }
 
 function drawTransferCard() {
