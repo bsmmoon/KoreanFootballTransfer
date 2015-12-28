@@ -1,0 +1,119 @@
+* {
+    /*border: 1px dashed red;*/
+    font-family: Tahoma, Geneva, sans-serif;
+}
+
+div {
+    vertical-align: top;
+    overflow: hidden;
+}
+
+img {
+    display: inline-block;
+}
+
+h2 {
+    display: block;
+}
+
+p {
+    display: block;
+}
+
+.main-frame {
+
+}
+
+.simple-card {
+    display: block;
+    position: relative;
+    vertical-align: middle;
+    border: 2px solid gray;
+    background: white;
+    width: 360px;
+    height: 240px;
+    color: #545454;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.simple-card:hover {
+    border: 2px solid red;
+}
+
+.simple-card .photo-frame {
+    display: inline-block;
+    width: 40%;
+    padding: 10px;
+}
+
+.simple-card .description-frame {
+    display: inline-block;
+    height: 90%;
+}
+
+.simple-card .description-frame h3 {
+    display: inline-block;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.simple-card .description-frame p {
+    display: inline-block;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.mini-card {
+    display: block;
+    position: relative;
+    vertical-align: middle;
+    border: 2px solid gray;
+    background: white;
+    width: 360px;
+    height: 80px;
+    color: #545454;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.mini-card:hover {
+    border: 2px solid red;
+}
+
+.mini-card .photo-frame {
+    display: none;
+}
+
+.mini-card .description-frame {
+    display: inline-block;
+    height: 90%;
+    margin-left: 10px;
+}
+
+.mini-card .description-frame h3 {
+    display: inline-block;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.mini-card .description-frame p {
+    display: none;
+}
+
+
+/*
+    source: http://stackoverflow.com/questions/796087/make-a-div-into-a-link
+*/
+.card-cover {
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    /*background-image: url('empty.gif');*/
+}
