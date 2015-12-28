@@ -13,13 +13,12 @@ var teams = [
         ];
 
 var deals = [
-        new Deal('transfer', '2,000,000,000 KRW', '2015-12-25')
+        new Deal('transfer', '2,000,000,000 KRW', '2015-12-25', ['http://google.com'])
         ];
 
 function Player(name, backnumber, position, dob, height, weight, image) {
     var player = {};
     player.name = name;
-    player.backnumber = backnumber;
     player.position = position;
     player.dob = dob;
     player.height = height;
@@ -36,11 +35,12 @@ function Team(name, competition, image) {
     return team;
 }
 
-function Deal(dealType, fee, dateAdded) {
+function Deal(dealType, fee, dateAdded, sources) {
     var deal = {};
     deal.dealType = dealType;
     deal.fee = fee;
     deal.dateAdded = dateAdded;
+    deal.sources = sources;
     return deal;
 }
 
@@ -62,7 +62,8 @@ function drawTransferCard() {
             drawDealInfo(deals[0]),
             drawTeamCard('simple-team', teams[0]),
             drawPlayerCard(0, players[1]),
-            drawTeamCard('simple-team',teams[1])
+            drawTeamCard('simple-team',teams[1]),
+            drawSources(deals[0])
         ]);
 
     document.getElementById(target).innerHTML += content;
@@ -75,20 +76,41 @@ function drawDealInfo(deal) {
         tagEditor('div', {
             'class': 'simple-deal-info'
         },  [
-            tagEditor('p', {}, [
-                function() {
-                    var detail = '';
-                    for (var attribute in deal) {
-                        if (attribute === 'dateAdded') {
-                            continue;
-                        }
-                        detail += attribute + ': ' + deal[attribute];
-                        detail += ' / ';
+            function() {
+                var detail = '';
+                for (var attribute in deal) {
+                    if (attribute === 'dateAdded' ||
+                        attribute === 'sources') {
+                        continue;
                     }
-                    detail += deal['dateAdded'];
-                    return detail;
-                }()
-            ])
+                    detail += attribute + ': ' + deal[attribute];
+                    detail += ' / ';
+                }
+                detail += deal['dateAdded'];
+                return detail;
+            }()
+        ]);
+
+    return content;
+}
+
+function drawSources(deal) {
+    var sources = deal.sources,
+        content = '';
+
+    content +=
+        tagEditor('div', {
+            'class': 'simple-sources'
+        },  [
+            function() {
+                var detail = '';
+                detail += tagEditor('a', {
+                    'href': sources[0]
+                },  [
+                    'Primary Source'
+                ]);
+                return detail;
+            }()
         ]);
 
     return content;
@@ -104,8 +126,7 @@ function drawTeamCard(item, team) {
         },  [
             tagEditor('img', {
                 'src': image,
-                'alt': 'HTML5',
-                'style': 'max-height: 100%; max-width: 100%;'
+                'alt': 'HTML5'
             })
         ]);
 
@@ -128,8 +149,7 @@ function drawPlayerCard(cardID, player) {
             },  [
                 tagEditor('img', {
                     'src': image,
-                    'alt': 'HTML5',
-                    'style': 'max-height: 100%; max-width: 100%;'
+                    'alt': 'HTML5'
                 })
             ]),
             tagEditor('div', {
@@ -156,10 +176,7 @@ function cardClick(card) {
 
 function getPlayerProfile(player) {
     var out = tagEditor('h2', {},  [player.name]);
-    out += tagEditor('p', {
-        'class': 'description'
-    },  [
-        function() {
+    out += function() {
         var detail = '';
         for (var attribute in player) {
             if (attribute === 'name' ||
@@ -169,8 +186,8 @@ function getPlayerProfile(player) {
             detail += attribute + ': ' + player[attribute];
             detail += '<br>';
         }
-        return detail;}()
-        ]);
+        return detail;
+    }();
     console.log(out);
 
     return out;
