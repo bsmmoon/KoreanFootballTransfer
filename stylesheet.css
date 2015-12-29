@@ -1,73 +1,87 @@
+/*
+    Reset
+    souce: http://code.tutsplus.com/tutorials/5-ways-to-instantly-write-better-css--net-3003
+*/
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote,
+pre, form, fieldset, table, th, td { margin: 0; padding: 0; font-family: Tahoma, Geneva, sans-serif; }
+
 * {
+    /* for layout debugging purpose only */
     /*border: 1px dashed red;*/
-    font-family: Tahoma, Geneva, sans-serif;
 }
 
 div {
-    vertical-align: top;
     overflow: hidden;
+    vertical-align: top;
 }
 
 body {
     background-color: #ffc3a0;
     text-align: center;
+    width: auto;
 }
 
-#main-frame {
-    display: inline-block;
-    max-width: 480px;
-    width: 100%;    
+@media (min-width: 481px) {
+    #main-frame {
+        display: inline-block;
+        margin: auto;
+        max-width: 100%;
+        padding: 0 1em;
+        width: 480px;
+    }
+}
+
+@media (max-width: 480px) {
+    #main-frame {
+        display: inline-block;
+        margin: auto;
+        padding: 0 1em;
+        width: 100%;
+    }    
 }
 
 .simple-transfer-card {
-    display: block;
-    position: relative;
-    vertical-align: middle;
+    background: white;
     border-top: 3px solid gray;
     border-bottom: 3px solid gray;
-    background: white;
-    width: 100%;
     color: #545454;
-    margin: auto;
-    margin-top: 1px;
-    margin-bottom: 1px;
-    padding: 0px;
-
+    display: block;
     height: 320px;
+    margin: 1px auto;
+    padding: 0px;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
 }
 
 .mini-transfer-card {
-    display: block;
-    position: relative;
-    vertical-align: middle;
+    background: white;
     border-top: 3px solid gray;
     border-bottom: 3px solid gray;
-    background: white;
-    width: 100%;
     color: #545454;
-    margin: auto;
-    margin-top: 1px;
-    margin-bottom: 1px;
-    padding: 0px;
-
+    display: block;
     height: 174px;
+    margin: 1px auto;
+    padding: 0px;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
 }
 
 .simple-deal-info {
+    border-bottom: 2px dotted gray;
+    font-size: 14px;
     height: 40px;
     line-height: 40px;
-    border-bottom: 2px dotted gray;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: auto 10px;
     text-align: center;
 }
 
 .simple-sources {
+    border-top: 2px dotted gray;
     height: 40px;
     line-height: 40px;
-    border-top: 2px dotted gray;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: auto 10px;
     text-align: center;
 }
 
@@ -94,15 +108,14 @@ body {
 }
 
 .simple-player-card {
+    background: white;
+    color: #545454;
     display: inline-block;
+    height: 240px;
+    margin: auto;
     position: relative;
     vertical-align: middle;
-    background: white;
     width: 360px;
-    color: #545454;
-    margin: auto;
-
-    height: 240px;
 }
 
 .simple-player-card .photo-frame img {
@@ -112,8 +125,8 @@ body {
 
 .simple-player-card .photo-frame {
     display: inline-block;
-    width: 40%;
     padding: 10px;
+    width: 40%;
 }
 
 .simple-player-card .card-cover:hover {
@@ -123,6 +136,7 @@ body {
 .simple-player-card .description-frame {
     display: inline-block;
     height: 90%;
+    text-align: left;
 }
 
 .simple-player-card .description-frame h2 {
@@ -138,18 +152,14 @@ body {
 }
 
 .mini-player-card {
+    background: white;
+    color: #545454;
     display: inline-block;
+    height: 60px;
+    margin: 15px auto;
     position: relative;
     vertical-align: middle;
-    background: white;
     width: 360px;
-    color: #545454;
-    margin: auto;
-
-    margin-top: 15px;
-    margin-bottom: 15px;
-
-    height: 60px;
 }
 
 .mini-player-card:hover {
@@ -163,8 +173,8 @@ body {
 .mini-player-card .description-frame {
     display: inline-block;
     height: 100%;
-    width: 100%;
     text-align: center;
+    width: 100%;
 }
 
 .mini-player-card .description-frame h2 {
@@ -183,10 +193,10 @@ body {
 */
 .card-cover {
     background-color: transparent;
-    position: absolute;
-    width: 100%;
     height: 100%;
     left: 0;
+    position: absolute;
+    width: 100%;
     top: 0;
     z-index: 1;
     /*background-image: url('empty.gif');*/
