@@ -15,33 +15,30 @@ pre, form, fieldset, table, th, td { margin: 0; padding: 0; font-family: Tahoma,
 /***** Basic Elements *****/
 div { display: inline-block; overflow: hidden; vertical-align: top; }
 
-body { background-color: #ffc3a0; text-align: center; width: auto; }
+body {
+    background-color: #ffc3a0;
+    color: #545454;
+    text-align: center;
+    width: auto;
+}
 
 /***** Generic Classes *****/
 .transfer-card {
     background: white;
     border-top: 3px solid gray;
     border-bottom: 3px solid gray;
-    color: #545454;
     display: block;
     margin: 1px auto;
-    padding: 0;
     position: relative;
 }
 
-.player {
-    background: white;
-    color: #545454;
-   
-    position: relative;
-    vertical-align: middle;
-}
+.player { position: relative; vertical-align: middle; }
 
-.team { vertical-align: middle; }
+.team { position: relative; vertical-align: middle; }
 
 /***** Basic Layout *****/
 @media (min-width: 481px) {
-    #main-frame {
+    .middle-frame {
         margin: auto;
         max-width: 100%;
         padding: 0 1em;
@@ -50,7 +47,7 @@ body { background-color: #ffc3a0; text-align: center; width: auto; }
 }
 
 @media (max-width: 480px) {
-    #main-frame {
+    .middle-frame {
         margin: auto;
         padding: 0 1em;
         width: 100%;
@@ -70,7 +67,6 @@ body { background-color: #ffc3a0; text-align: center; width: auto; }
     font-size: 14px;
     height: 40px;
     line-height: 40px;
-    padding: auto 10px;
     text-align: center;
 }
 
@@ -79,7 +75,6 @@ body { background-color: #ffc3a0; text-align: center; width: auto; }
     display: block;
     height: 40px;
     line-height: 40px;
-    padding: auto 10px;
     text-align: center;
 }
 
@@ -101,7 +96,7 @@ body { background-color: #ffc3a0; text-align: center; width: auto; }
 
 .player--simple .description-frame { height: 90%; text-align: left; }
 
-.player--simple .description-frame div { max-height: 100%; max-width: 100% }
+.player--simple .description-frame div { max-height: 100%; max-width: 100%; }
 
 .player--mini { height: 60px; margin: 15px auto; width: 360px; }
 
