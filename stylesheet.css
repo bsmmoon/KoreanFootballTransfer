@@ -59,7 +59,7 @@ body {
 /***** Content *****/
 .transfer-card--simple { height: 320px; width: 100%; }
 
-.transfer-card--mini { height: 174px; width: 100%; }
+.transfer-card--mini { height: 160px; width: 100%; }
 
 .deal-info {
     border-bottom: 2px dotted gray;
@@ -78,15 +78,16 @@ body {
     text-align: center;
 }
 
-.team--simple { width: 60px; }
+/*there is danger in team height*/
+.team--simple { width: 12.5%; }
 
 .team--simple img { max-height: 100%; max-width: 100%; }
 
-.team--mini { width: 60px; }
+.team--mini { width: 12.5%; }
 
 .team--mini img { max-height: 100%; max-width: 100%; }
 
-.player--simple { height: 240px; margin: auto; width: 360px; }
+.player--simple { height: 75%; margin: 0 auto; width: 75%; }
 
 .player--simple .photo-frame { width: 40%; }
 
@@ -98,7 +99,7 @@ body {
 
 .player--simple .description-frame div { max-height: 100%; max-width: 100%; }
 
-.player--mini { height: 60px; margin: 15px auto; width: 360px; }
+.player--mini { height: 50%; margin: 0 auto; width: 75%; }
 
 /*.player--mini:hover {  }*/
 
