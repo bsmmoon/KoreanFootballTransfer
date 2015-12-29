@@ -37,18 +37,17 @@ body {
 .team { position: relative; vertical-align: middle; }
 
 /***** Basic Layout *****/
-@media (min-width: 600px) {
+@media (min-width: 505px) {
     .middle-frame {
         margin: auto;
         width: 480px;
     }
 }
 
-/*it should be 80% but sth makes a slight miss. check later.*/
-@media (max-width: 600px) {
+@media (max-width: 505px) {
     .middle-frame {
         margin: auto;
-        width: 82%;
+        width: 95%;
     }    
 }
 
