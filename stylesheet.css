@@ -13,15 +13,34 @@ html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote,
 pre, form, fieldset, table, th, td { margin: 0; padding: 0; font-family: Tahoma, Geneva, sans-serif; }
 
 /***** Basic Elements *****/
-* {
-    /* for layout debugging purpose only */
-    /*border: 1px dashed red;*/
-}
-
 div { overflow: hidden; vertical-align: top; }
 
 body { background-color: #ffc3a0; text-align: center; width: auto; }
 
+/***** Generic Classes *****/
+.transfer-card {
+    background: white;
+    border-top: 3px solid gray;
+    border-bottom: 3px solid gray;
+    color: #545454;
+    display: block;
+    margin: 1px auto;
+    padding: 0px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.player {
+    background: white;
+    color: #545454;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+.team { display: inline-block; vertical-align: middle; }
+
+/***** Basic Layout *****/
 @media (min-width: 481px) {
     #main-frame {
         display: inline-block;
@@ -41,42 +60,14 @@ body { background-color: #ffc3a0; text-align: center; width: auto; }
     }    
 }
 
-/***** Generic Classes *****/
-
-/***** Basic Layout *****/
-
 /***** Header *****/
 
 /***** Content *****/
-.simple-transfer-card {
-    background: white;
-    border-top: 3px solid gray;
-    border-bottom: 3px solid gray;
-    color: #545454;
-    display: block;
-    height: 320px;
-    margin: 1px auto;
-    padding: 0px;
-    position: relative;
-    vertical-align: middle;
-    width: 100%;
-}
+.transfer-card--simple { height: 320px; width: 100%; }
 
-.mini-transfer-card {
-    background: white;
-    border-top: 3px solid gray;
-    border-bottom: 3px solid gray;
-    color: #545454;
-    display: block;
-    height: 174px;
-    margin: 1px auto;
-    padding: 0px;
-    position: relative;
-    vertical-align: middle;
-    width: 100%;
-}
+.transfer-card--mini { height: 174px; width: 100%; }
 
-.simple-deal-info {
+.deal-info {
     border-bottom: 2px dotted gray;
     font-size: 14px;
     height: 40px;
@@ -85,7 +76,7 @@ body { background-color: #ffc3a0; text-align: center; width: auto; }
     text-align: center;
 }
 
-.simple-sources {
+.sources {
     border-top: 2px dotted gray;
     height: 40px;
     line-height: 40px;
@@ -93,67 +84,52 @@ body { background-color: #ffc3a0; text-align: center; width: auto; }
     text-align: center;
 }
 
-.simple-team { display: inline-block; vertical-align: middle; width: 60px; }
+.team--simple { width: 60px; }
 
-.simple-team img { max-height: 100%; max-width: 100%; }
+.team--simple img { max-height: 100%; max-width: 100%; }
 
-.mini-team { display: inline-block; vertical-align: middle; width: 60px; }
+.team--mini { width: 60px; }
 
-.mini-team img { max-height: 100%; max-width: 100%; }
+.team--mini img { max-height: 100%; max-width: 100%; }
 
-.simple-player-card {
-    background: white;
-    color: #545454;
-    display: inline-block;
+.player--simple {
     height: 240px;
     margin: auto;
-    position: relative;
-    vertical-align: middle;
     width: 360px;
 }
 
-.simple-player-card .photo-frame img { max-height: 100%; max-width: 100%; }
+.player--simple .photo-frame img { max-height: 100%; max-width: 100%; }
 
-.simple-player-card .photo-frame { display: inline-block; padding: 10px; width: 40%; }
+.player--simple .photo-frame { display: inline-block; padding: 10px; width: 40%; }
 
-.simple-player-card .card-cover:hover {
-/*    background: rgba(255,0,0,0.1);*/
-}
+.player--simple .card-cover:hover { /*background: rgba(255,0,0,0.1);*/ }
 
-.simple-player-card .description-frame { display: inline-block; height: 90%; text-align: left; }
+.player--simple .description-frame { display: inline-block; height: 90%; text-align: left; }
 
-.simple-player-card .description-frame h2 { display: block; max-height: 100%; max-width: 100%; }
+.player--simple .description-frame h2 { display: block; max-height: 100%; max-width: 100%; }
 
-.simple-player-card .description-frame div { display: inline-block; max-height: 100%; max-width: 100% }
+.player--simple .description-frame div { display: inline-block; max-height: 100%; max-width: 100% }
 
-.mini-player-card {
-    background: white;
-    color: #545454;
-    display: inline-block;
+.player--mini {
     height: 60px;
     margin: 15px auto;
-    position: relative;
-    vertical-align: middle;
     width: 360px;
 }
 
-.mini-player-card:hover {
-/*    background: rgba(255,0,0,0.1);*/
-}
+.player--mini:hover { /*background: rgba(255,0,0,0.1);*/ }
 
-.mini-player-card .photo-frame { display: none; }
+.player--mini .photo-frame { display: none; }
 
-.mini-player-card .description-frame {
+.player--mini .description-frame {
     display: inline-block;
     height: 100%;
     text-align: center;
     width: 100%;
 }
 
-.mini-player-card .description-frame h2 { display: block; max-height: 100%; max-width: 100%; }
+.player--mini .description-frame h2 { display: block; max-height: 100%; max-width: 100%; }
 
-.mini-player-card .description-frame div { display: none; }
-
+.player--mini .description-frame div { display: none; }
 
 /* http://stackoverflow.com/questions/796087/make-a-div-into-a-link */
 .card-cover {

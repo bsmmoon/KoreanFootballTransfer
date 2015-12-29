@@ -59,12 +59,12 @@ function drawTransferCard() {
 
     content +=
         tagEditor('div', {
-            'class': defaultSetting + '-transfer-card',
+            'class': 'transfer-card  transfer-card--' + defaultSetting,
         }, [
             drawDealInfo(deals[0]),
-            drawTeamCard(defaultSetting + '-team', teams[0]),
+            drawTeamCard('team  team--' + defaultSetting, teams[0]),
             drawPlayerCard(0, players[1]),
-            drawTeamCard(defaultSetting + '-team',teams[1]),
+            drawTeamCard('team  team--' + defaultSetting,teams[1]),
             drawSources(deals[0])
         ]);
 
@@ -76,7 +76,7 @@ function drawDealInfo(deal) {
 
     content +=
         tagEditor('div', {
-            'class': 'simple-deal-info'
+            'class': 'deal-info'
         },  [
             function() {
                 var detail = '';
@@ -102,7 +102,7 @@ function drawSources(deal) {
 
     content +=
         tagEditor('div', {
-            'class': 'simple-sources'
+            'class': 'sources'
         },  [
             function() {
                 var detail = '';
@@ -143,7 +143,7 @@ function drawPlayerCard(cardID, player) {
 
     content += 
         tagEditor('div', {
-            'class': defaultSetting + '-player-card',
+            'class': 'player  player--' + defaultSetting,
             'id': frameID
         },  [
             tagEditor('div', {
@@ -172,16 +172,16 @@ function makeCardSmaller(card) {
     var transferCard = card.parentNode,
         teamFrom = card.previousSibling,
         teamTo = card.nextSibling;
-    if (card.className === 'simple-player-card') {
-        transferCard.className = 'mini-transfer-card'
-        card.className = 'mini-player-card';
-        teamFrom.className = 'mini-team';
-        teamTo.className = 'mini-team';
-    } else if (card.className === 'mini-player-card') {
-        transferCard.className = 'simple-transfer-card'
-        card.className = 'simple-player-card';
-        teamFrom.className = 'simple-team';
-        teamTo.className = 'simple-team';
+    if (card.className === 'player  player--simple') {
+        transferCard.className = 'transfer-card  transfer-card--mini'
+        card.className = 'player  player--mini';
+        teamFrom.className = 'team  team--mini';
+        teamTo.className = 'team  team--mini';
+    } else if (card.className === 'player  player--mini') {
+        transferCard.className = 'transfer-card  transfer-card--simple'
+        card.className = 'player  player--simple';
+        teamFrom.className = 'team  team--simple';
+        teamTo.className = 'team  team--simple';
     }
 }
 
