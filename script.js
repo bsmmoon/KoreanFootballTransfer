@@ -1,10 +1,12 @@
 'use strict';
 
-$(document).ready(function() {
-
-});
-
 var defaultSetting = 'mini';
+
+$(document).ready(function() {
+    $(document).on('click', '.card-cover', function() {
+        toggleTransferCard($(this).parent());
+    });
+});
 
 function main() {
     for (var index = 0; index < 20; index += 1) {
@@ -18,9 +20,9 @@ function drawTransferCard() {
     $(target).append(tagEditor('div', { 'class': 'transfer-card  transfer-card--' + defaultSetting, }));
     div = target.lastChild;
     drawDealInfo(div, deals[0]);
-    drawTeamCard(div, 'team  team--' + defaultSetting, teams[0]);
+    drawTeamCard(div, 'team-card  team-card--' + defaultSetting, teams[0]);
     drawPlayerCard(div, 0, players[1]);
-    drawTeamCard(div, 'team  team--' + defaultSetting,teams[1]);
+    drawTeamCard(div, 'team-card  team-card--' + defaultSetting,teams[1]);
     drawSources(div, deals[0]);
 }
 
@@ -58,7 +60,7 @@ function drawPlayerCard(target, cardID, player) {
     var frameID = makeFrameID('card', cardID),
         image = player.image,
         div, subdiv;
-    $(target).append(tagEditor('div', { 'class': 'player  player--' + defaultSetting, 'id': frameID }));
+    $(target).append(tagEditor('div', { 'class': 'player-card  player-card--' + defaultSetting, 'id': frameID }));
     div = target.lastChild;
 
     $(div).append(tagEditor('div', { 'class': 'photo-frame' }));
@@ -83,24 +85,17 @@ function drawPlayerCard(target, cardID, player) {
         return detail;
     }());
 
-    $(div).append(tagEditor('span', { 'class': 'card-cover', 'onmousedown': 'makeCardSmaller(this.parentNode)' }));
+    $(div).append(tagEditor('span', { 'class': 'card-cover'}));
 }
 
-function makeCardSmaller(card) {
-    var transferCard = card.parentNode,
-        teamFrom = card.previousSibling,
-        teamTo = card.nextSibling;
-    if (card.className === 'player  player--simple') {
-        transferCard.className = 'transfer-card  transfer-card--mini';
-        card.className = 'player  player--mini';
-        teamFrom.className = 'team  team--mini';
-        teamTo.className = 'team  team--mini';
-    } else if (card.className === 'player  player--mini') {
-        transferCard.className = 'transfer-card  transfer-card--simple';
-        card.className = 'player  player--simple';
-        teamFrom.className = 'team  team--simple';
-        teamTo.className = 'team  team--simple';
-    }
+function toggleTransferCard(card) {
+    var transferCard = card.parent(),
+        teamFrom = card.prev(),
+        teamTo = card.next();
+    transferCard.toggleClass('transfer-card--mini');
+    card.toggleClass('player-card--mini');
+    teamFrom.toggleClass('team-card--mini');
+    teamTo.toggleClass('team-card--mini');
 }
 
 function makeFrameID(htmlclass, htmlid) {
@@ -113,7 +108,6 @@ function tagEditor(tag, attributes) {
         out += ' ' + attribute + '="' + attributes[attribute] +'"';
     }
     out += '></' + tag + '>';
-    console.log(out);
     return out;
 }
 
