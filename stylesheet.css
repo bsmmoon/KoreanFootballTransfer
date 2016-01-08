@@ -1,180 +1,122 @@
-* {
-    /*border: 1px dashed red;*/
-    font-family: Tahoma, Geneva, sans-serif;
-}
-
-div {
-    vertical-align: top;
-    overflow: hidden;
-}
-
-#main-frame {
-
-}
-
-.simple-transfer-card {
-    display: block;
-    position: relative;
-    vertical-align: middle;
-    border: 3px solid gray;
-    border-radius: 12px;
-    background: white;
-    width: 484px;
-    height: 320px;
-    color: #545454;
-    margin: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding: 0px;
-}
-
-.mini-transfer-card {
-    display: block;
-    position: relative;
-    vertical-align: middle;
-    border: 3px solid gray;
-    border-radius: 12px;
-    background: white;
-    width: 484px;
-    height: 170px;
-    color: #545454;
-    margin: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding: 0px;
-}
-
-.simple-deal-info {
-    height: 40px;
-    line-height: 40px;
-    border-bottom: 2px solid gray;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: center;
-}
-
-.simple-sources {
-    height: 40px;
-    line-height: 40px;
-    border-top: 2px solid gray;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: center;
-}
-
-.simple-team {
-    display: inline-block;
-    vertical-align: middle;
-    width: 60px;
-}
-
-.simple-team img {
-    max-height: 100%;
-    max-width: 100%;
-}
-
-.mini-team {
-    display: inline-block;
-    vertical-align: middle;
-    width: 60px;
-}
-
-.mini-team img {
-    max-height: 100%;
-    max-width: 100%;
-}
-
-.simple-player-card {
-    display: inline-block;
-    position: relative;
-    vertical-align: middle;
-    background: white;
-    width: 360px;
-    height: 240px;
-    color: #545454;
-    margin: auto;
-}
-
-.simple-player-card .photo-frame img {
-    max-height: 100%;
-    max-width: 100%;
-}
-
-.simple-player-card .photo-frame {
-    display: inline-block;
-    width: 40%;
-    padding: 10px;
-}
-
-.simple-player-card .card-cover:hover {
-    background: rgba(255,0,0,0.1);
-}
-
-.simple-player-card .description-frame {
-    display: inline-block;
-    height: 90%;
-}
-
-.simple-player-card .description-frame h2 {
-    display: block;
-    max-height: 100%;
-    max-width: 100%;
-}
-
-.simple-player-card .description-frame div {
-    display: inline-block;
-    max-height: 100%;
-    max-width: 100%;
-}
-
-.mini-player-card {
-    display: inline-block;
-    position: relative;
-    vertical-align: middle;
-    background: white;
-    width: 360px;
-    height: 60px;
-    color: #545454;
-    margin: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.mini-player-card:hover {
-    background: rgba(255,0,0,0.1);
-}
-
-.mini-player-card .photo-frame {
-    display: none;
-}
-
-.mini-player-card .description-frame {
-    display: inline-block;
-    height: 90%;
-    margin-left: 10px;
-}
-
-.mini-player-card .description-frame h2 {
-    display: block;
-    max-height: 100%;
-    max-width: 100%;
-}
-
-.mini-player-card .description-frame div {
-    display: none;
-}
-
-
 /*
-    source: http://stackoverflow.com/questions/796087/make-a-div-into-a-link
+    General Rules:
+        - Break lines if there are more than 3 lines.
+
+    References:
+        - http://code.tutsplus.com/tutorials/5-ways-to-instantly-write-better-css--net-3003
 */
+
+
+/*****Reset*****/
+/* http://code.tutsplus.com/tutorials/5-ways-to-instantly-write-better-css--net-3003 */
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote,
+pre, form, fieldset, table, th, td { margin: 0; padding: 0; font-family: Tahoma, Geneva, sans-serif; }
+
+/***** Basic Elements *****/
+div { display: inline-block; overflow: hidden; vertical-align: top; }
+
+body {
+    background-color: #ffc3a0;
+    color: #545454;
+    text-align: center;
+    width: auto;
+}
+
+/***** Generic Classes *****/
+.transfer-card {
+    background: white;
+    border-top: 3px solid gray;
+    border-bottom: 3px solid gray;
+    display: block;
+    margin: 1px auto;
+    position: relative;
+}
+
+.player { position: relative; vertical-align: middle; }
+
+.team { position: relative; vertical-align: middle; }
+
+/***** Basic Layout *****/
+@media (min-width: 505px) {
+    .middle-frame {
+        margin: auto;
+        width: 480px;
+    }
+}
+
+@media (max-width: 505px) {
+    .middle-frame {
+        margin: auto;
+        width: 95%;
+    }    
+}
+
+/***** Header *****/
+
+/***** Content *****/
+.transfer-card--simple { height: 320px; width: 100%; }
+
+.transfer-card--mini { height: 160px; width: 100%; }
+
+.deal-info {
+    border-bottom: 2px dotted gray;
+    display: block;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.sources {
+    border-top: 2px dotted gray;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+/*there is danger in team height*/
+.team--simple { width: 12.5%; }
+
+.team--simple img { max-height: 100%; max-width: 100%; }
+
+.team--mini { width: 12.5%; }
+
+.team--mini img { max-height: 100%; max-width: 100%; }
+
+.player--simple { height: 75%; margin: 0 auto; width: 75%; }
+
+.player--simple .photo-frame { width: 40%; }
+
+.player--simple .photo-frame img { max-height: 100%; max-width: 100%; }
+
+/*.player--simple .card-cover:hover {  }*/
+
+.player--simple .description-frame { height: 90%; text-align: left; }
+
+.player--simple .description-frame div { max-height: 100%; max-width: 100%; }
+
+.player--mini { height: 50%; margin: 0 auto; width: 75%; }
+
+/*.player--mini:hover {  }*/
+
+.player--mini .photo-frame { display: none; }
+
+/*.player--mini .description-frame {  }*/
+
+.player--mini .description-frame div { display: none; }
+
+/* http://stackoverflow.com/questions/796087/make-a-div-into-a-link */
 .card-cover {
     background-color: transparent;
-    position: absolute;
-    width: 100%;
     height: 100%;
     left: 0;
+    position: absolute;
+    width: 100%;
     top: 0;
     z-index: 1;
-    /*background-image: url('empty.gif');*/
 }
+
+/***** Footer *****/
+
+/***** Etc *****/
