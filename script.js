@@ -15,34 +15,28 @@ function main() {
 function drawTransferCard() {
     var target = document.getElementById('transfer-stream');
     $(target).append(tagEditor('div', { 'class': 'transfer-card  transfer-card--' + defaultSetting, }));
-    $(target.lastChild).append(drawDealInfo(deals[0]));
+    drawDealInfo(target.lastChild, deals[0]);
     $(target.lastChild).append(drawTeamCard('team  team--' + defaultSetting, teams[0]));
     $(target.lastChild).append(drawPlayerCard(0, players[1]));
     $(target.lastChild).append(drawTeamCard('team  team--' + defaultSetting,teams[1]));
     $(target.lastChild).append(drawSources(deals[0]));
 }
 
-function drawDealInfo(deal) {
-    var content = '';
-
-    content +=
-        tagEditor('div', { 'class': 'deal-info' }, [
-            function() {
-                var detail = '';
-                for (var attribute in deal) {
-                    if (attribute === 'dateAdded' ||
-                        attribute === 'sources') {
-                        continue;
-                    }
-                    detail += deal[attribute];
-                    detail += ' / ';
-                }
-                detail += deal.dateAdded;
-                return detail;
-            }()
-        ]);
-
-    return content;
+function drawDealInfo(target, deal) {
+    $(target).append(tagEditor('div', { 'class': 'deal-info' }));
+    $(target.lastChild).append(function() {
+        var detail = '';
+        for (var attribute in deal) {
+            if (attribute === 'dateAdded' ||
+                attribute === 'sources') {
+                continue;
+            }
+            detail += deal[attribute];
+            detail += ' / ';
+        }
+        detail += deal.dateAdded;
+        return detail;
+    }());
 }
 
 function drawSources(deal) {
