@@ -19,7 +19,7 @@ function drawTransferCard() {
     drawTeamCard(target.lastChild, 'team  team--' + defaultSetting, teams[0]);
     drawPlayerCard(target.lastChild, 0, players[1]);
     drawTeamCard(target.lastChild, 'team  team--' + defaultSetting,teams[1]);
-    $(target.lastChild).append(drawSources(deals[0]));
+    drawSources(target.lastChild, deals[0]);
 }
 
 function drawDealInfo(target, deal) {
@@ -39,22 +39,16 @@ function drawDealInfo(target, deal) {
     }());
 }
 
-function drawSources(deal) {
-    var sources = deal.sources,
-        content = '';
-
-    content +=
-        tagEditor('div', { 'class': 'sources' }, [
-            function() {
-                var detail =
-                    tagEditor('a', { 'href': sources[0], 'target': '_blank' }, [
-                        'Primary Source'
-                    ]);
-                return detail;
-            }()
-        ]);
-
-    return content;
+function drawSources(target, deal) {
+    var sources = deal.sources;
+    $(target).append(tagEditor('div', { 'class': 'sources' }));
+    $(target.lastChild).append(function() {
+        var detail =
+            tagEditor('a', { 'href': sources[0], 'target': '_blank' }, [
+                'Primary Source'
+            ]);
+        return detail;
+    }());
 }
 
 function drawTeamCard(target, item, team) {
