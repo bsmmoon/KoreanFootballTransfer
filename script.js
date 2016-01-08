@@ -13,13 +13,15 @@ function main() {
 }
 
 function drawTransferCard() {
-    var target = document.getElementById('transfer-stream');
+    var target = document.getElementById('transfer-stream'),
+        div;
     $(target).append(tagEditor('div', { 'class': 'transfer-card  transfer-card--' + defaultSetting, }));
-    drawDealInfo(target.lastChild, deals[0]);
-    drawTeamCard(target.lastChild, 'team  team--' + defaultSetting, teams[0]);
-    drawPlayerCard(target.lastChild, 0, players[1]);
-    drawTeamCard(target.lastChild, 'team  team--' + defaultSetting,teams[1]);
-    drawSources(target.lastChild, deals[0]);
+    div = target.lastChild;
+    drawDealInfo(div, deals[0]);
+    drawTeamCard(div, 'team  team--' + defaultSetting, teams[0]);
+    drawPlayerCard(div, 0, players[1]);
+    drawTeamCard(div, 'team  team--' + defaultSetting,teams[1]);
+    drawSources(div, deals[0]);
 }
 
 function drawDealInfo(target, deal) {
@@ -59,13 +61,15 @@ function drawTeamCard(target, item, team) {
 
 function drawPlayerCard(target, cardID, player) {
     var frameID = makeFrameID('card', cardID),
-        image = player.image;
+        image = player.image,
+        div;
     $(target).append(tagEditor('div', { 'class': 'player  player--' + defaultSetting, 'id': frameID }));
-    $(target.lastChild).append(tagEditor('div', { 'class': 'photo-frame' }));
-    $(target.lastChild.lastChild).append(tagEditor('img', { 'src': image, 'alt': 'HTML5' }));
-    $(target.lastChild).append(tagEditor('div', { 'class': 'description-frame', }));
-    $(target.lastChild.lastChild).append(getPlayerProfile(player));
-    $(target.lastChild).append(tagEditor('span', { 'class': 'card-cover', 'onmousedown': 'makeCardSmaller(this.parentNode)' }));
+    div = target.lastChild;
+    $(div).append(tagEditor('div', { 'class': 'photo-frame' }));
+    $(div.lastChild).append(tagEditor('img', { 'src': image, 'alt': 'HTML5' }));
+    $(div).append(tagEditor('div', { 'class': 'description-frame', }));
+    $(div.lastChild).append(getPlayerProfile(player));
+    $(div).append(tagEditor('span', { 'class': 'card-cover', 'onmousedown': 'makeCardSmaller(this.parentNode)' }));
 }
 
 function makeCardSmaller(card) {
