@@ -2,6 +2,12 @@
 
 var defaultSetting = 'mini';
 
+$(document).ready(function() {
+    $(document).on('click', '.card-cover', function() {
+        toggleTransferCard($(this).parent());
+    });
+});
+
 function main() {
     for (var index = 0; index < 20; index += 1) {
         drawTransferCard();
@@ -9,149 +15,106 @@ function main() {
 }
 
 function drawTransferCard() {
-    var content = '',
-        target = 'transfer-stream';
-
-    content +=
-        tagEditor('div', { 'class': 'transfer-card  transfer-card--' + defaultSetting, }, [
-            drawDealInfo(deals[0]),
-            drawTeamCard('team  team--' + defaultSetting, teams[0]),
-            drawPlayerCard(0, players[1]),
-            drawTeamCard('team  team--' + defaultSetting,teams[1]),
-            drawSources(deals[0])
-        ]);
-
-    document.getElementById(target).innerHTML += content;
+    var target = document.getElementById('transfer-stream'),
+        div;
+    $(target).append(tagEditor('div', { 'class': 'transfer-card  transfer-card--' + defaultSetting, }));
+    div = target.lastChild;
+    drawDealInfo(div, deals[0]);
+    drawTeamCard(div, 'team-card  team-card--' + defaultSetting, teams[0]);
+    drawPlayerCard(div, 0, players[1]);
+    drawTeamCard(div, 'team-card  team-card--' + defaultSetting,teams[1]);
+    drawSources(div, deals[0]);
 }
 
-function drawDealInfo(deal) {
-    var content = '';
-
-    content +=
-        tagEditor('div', { 'class': 'deal-info' }, [
-            function() {
-                var detail = '';
-                for (var attribute in deal) {
-                    if (attribute === 'dateAdded' ||
-                        attribute === 'sources') {
-                        continue;
-                    }
-                    detail += deal[attribute];
-                    detail += ' / ';
-                }
-                detail += deal.dateAdded;
-                return detail;
-            }()
-        ]);
-
-    return content;
-}
-
-function drawSources(deal) {
-    var sources = deal.sources,
-        content = '';
-
-    content +=
-        tagEditor('div', { 'class': 'sources' }, [
-            function() {
-                var detail =
-                    tagEditor('a', { 'href': sources[0], 'target': '_blank' }, [
-                        'Primary Source'
-                    ]);
-                return detail;
-            }()
-        ]);
-
-    return content;
-}
-
-function drawTeamCard(item, team) {
-    var content = '',
-        image = team.image;
-
-    content +=
-        tagEditor('div', { 'class': item }, [
-            tagEditor('img', { 'src': image, 'alt': 'HTML5' })
-        ]);
-
-    return content;
-}
-
-function drawPlayerCard(cardID, player) {
-    var content = '',
-        frameID = makeFrameID('card', cardID),
-        image = player.image;
-
-    content +=
-        tagEditor('div', { 'class': 'player  player--' + defaultSetting, 'id': frameID }, [
-            tagEditor('div', { 'class': 'photo-frame' }, [
-                tagEditor('img', { 'src': image, 'alt': 'HTML5' })
-            ]),
-            tagEditor('div', { 'class': 'description-frame', }, [
-                getPlayerProfile(player)
-            ]),
-            tagEditor('span', { 'class': 'card-cover', 'onmousedown': 'makeCardSmaller(this.parentNode)' })
-        ]);
-
-    return content;
-}
-
-function makeCardSmaller(card) {
-    var transferCard = card.parentNode,
-        teamFrom = card.previousSibling,
-        teamTo = card.nextSibling;
-    if (card.className === 'player  player--simple') {
-        transferCard.className = 'transfer-card  transfer-card--mini';
-        card.className = 'player  player--mini';
-        teamFrom.className = 'team  team--mini';
-        teamTo.className = 'team  team--mini';
-    } else if (card.className === 'player  player--mini') {
-        transferCard.className = 'transfer-card  transfer-card--simple';
-        card.className = 'player  player--simple';
-        teamFrom.className = 'team  team--simple';
-        teamTo.className = 'team  team--simple';
-    }
-}
-
-function getPlayerProfile(player) {
-    var out = tagEditor('h2', {},  [player.name]);
-    out += tagEditor('div', {}, [
-        function() {
-            var detail = '';
-            for (var attribute in player) {
-                if (attribute === 'name' ||
-                    attribute === 'image') {
-                    continue;
-                }
-                detail += attribute + ': ' + player[attribute];
-                detail += '<br>';
+function drawDealInfo(target, deal) {
+    $(target).append(tagEditor('div', { 'class': 'deal-info' }));
+    $(target.lastChild).append(function() {
+        var detail = '';
+        for (var attribute in deal) {
+            if (attribute === 'dateAdded' ||
+                attribute === 'sources') {
+                continue;
             }
-            return detail;
-        }()
-    ]);
-    console.log(out);
+            detail += deal[attribute];
+            detail += ' / ';
+        }
+        detail += deal.dateAdded;
+        return detail;
+    }());
+}
 
-    return out;
+function drawSources(target, deal) {
+    var sources = deal.sources;
+    $(target).append(tagEditor('div', { 'class': 'sources' }));
+    $(target.lastChild).append(tagEditor('a', { 'href': sources[0], 'target': '_blank' }));
+    $(target.lastChild.lastChild).append('Primary Source');
+}
+
+function drawTeamCard(target, item, team) {
+    var image = team.image;
+    $(target).append(tagEditor('div', { 'class': item }));
+    $(target.lastChild).append(tagEditor('img', { 'src': image, 'alt': 'HTML5' }));
+}
+
+function drawPlayerCard(target, cardID, player) {
+    var frameID = makeFrameID('card', cardID),
+        image = player.image,
+        div, subdiv;
+    $(target).append(tagEditor('div', { 'class': 'player-card  player-card--' + defaultSetting, 'id': frameID }));
+    div = target.lastChild;
+
+    $(div).append(tagEditor('div', { 'class': 'photo-frame' }));
+    subdiv = div.lastChild;
+    $(subdiv).append(tagEditor('img', { 'src': image, 'alt': 'HTML5' }));
+
+    $(div).append(tagEditor('div', { 'class': 'description-frame', }));
+    subdiv = div.lastChild;
+    $(subdiv).append(tagEditor('h2', {}));
+    $(subdiv.lastChild).append(player.name);
+    $(subdiv).append(tagEditor('div', {}));
+    $(subdiv.lastChild).append(function() {
+        var detail = '';
+        for (var attribute in player) {
+            if (attribute === 'name' ||
+                attribute === 'image') {
+                continue;
+            }
+            detail += attribute + ': ' + player[attribute];
+            detail += '<br>';
+        }
+        return detail;
+    }());
+
+    $(div).append(tagEditor('span', { 'class': 'card-cover'}));
+}
+
+function toggleTransferCard(card) {
+    var transferCard = card.parent(),
+        teamFrom = card.prev(),
+        teamTo = card.next();
+    transferCard.toggleClass('transfer-card--mini');
+    card.toggleClass('player-card--mini');
+    teamFrom.toggleClass('team-card--mini');
+    teamTo.toggleClass('team-card--mini');
 }
 
 function makeFrameID(htmlclass, htmlid) {
     return htmlclass + '-frame-' + htmlid;
 }
 
-function tagEditor(tag, attributes, contents) {
-    if (typeof(contents) === 'undefined') {
-        contents = [''];
-    }
-
+function tagEditor(tag, attributes) {
     var out = '<' + tag;
     for (var attribute in attributes) {
         out += ' ' + attribute + '="' + attributes[attribute] +'"';
     }
-    out += '>' + contents.join('') + '</' + tag + '>';
-    console.log(out);
+    out += '></' + tag + '>';
     return out;
 }
 
+//////////////////////////////////
+//  BELOW IS DUMMY FOR TEST     //
+//  To be removed later         //
+//////////////////////////////////
 
 var players = [
         new Player('이창근', '21', 'GK', '1993-08-30', '186', '78', 'https://www.busanipark.com/i_data/player/248_1.jpg'),

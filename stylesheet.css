@@ -32,9 +32,9 @@ body {
     position: relative;
 }
 
-.player { position: relative; vertical-align: middle; }
+.player-card { position: relative; vertical-align: middle; }
 
-.team { position: relative; vertical-align: middle; }
+.team-card { position: relative; vertical-align: middle; }
 
 /***** Basic Layout *****/
 @media (min-width: 505px) {
@@ -54,7 +54,7 @@ body {
 /***** Header *****/
 
 /***** Content *****/
-.transfer-card--simple { height: 320px; width: 100%; }
+.transfer-card { height: 320px; width: 100%; }
 
 .transfer-card--mini { height: 160px; width: 100%; }
 
@@ -76,35 +76,35 @@ body {
 }
 
 /*there is danger in team height*/
-.team--simple { width: 12.5%; }
+.team-card { width: 12.5%; }
 
-.team--simple img { max-height: 100%; max-width: 100%; }
+.team-card img { max-height: 100%; max-width: 100%; }
 
-.team--mini { width: 12.5%; }
+.team-card--mini { width: 12.5%; }
 
-.team--mini img { max-height: 100%; max-width: 100%; }
+.team-card--mini img { max-height: 100%; max-width: 100%; }
 
-.player--simple { height: 75%; margin: 0 auto; width: 75%; }
+.player-card { height: 75%; margin: 0 auto; width: 75%; }
 
-.player--simple .photo-frame { width: 40%; }
+.player-card .photo-frame { width: 40%; }
 
-.player--simple .photo-frame img { max-height: 100%; max-width: 100%; }
+.player-card .photo-frame img { max-height: 100%; max-width: 100%; }
 
-/*.player--simple .card-cover:hover {  }*/
+/*.player-card .card-cover:hover {  }*/
 
-.player--simple .description-frame { height: 90%; text-align: left; }
+.player-card .description-frame { height: 90%; text-align: left; }
 
-.player--simple .description-frame div { max-height: 100%; max-width: 100%; }
+.player-card .description-frame div { max-height: 100%; max-width: 100%; }
 
-.player--mini { height: 50%; margin: 0 auto; width: 75%; }
+.player-card--mini { height: 50%; margin: 0 auto; width: 75%; }
 
-/*.player--mini:hover {  }*/
+/*.player-card--mini:hover {  }*/
 
-.player--mini .photo-frame { display: none; }
+.player-card--mini .photo-frame { display: none; }
 
-/*.player--mini .description-frame {  }*/
+/*.player-card--mini .description-frame {  }*/
 
-.player--mini .description-frame div { display: none; }
+.player-card--mini .description-frame div { display: none; }
 
 /* http://stackoverflow.com/questions/796087/make-a-div-into-a-link */
 .card-cover {
