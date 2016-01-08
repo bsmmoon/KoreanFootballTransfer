@@ -44,13 +44,8 @@ function drawDealInfo(target, deal) {
 function drawSources(target, deal) {
     var sources = deal.sources;
     $(target).append(tagEditor('div', { 'class': 'sources' }));
-    $(target.lastChild).append(function() {
-        var detail =
-            tagEditor('a', { 'href': sources[0], 'target': '_blank' }, [
-                'Primary Source'
-            ]);
-        return detail;
-    }());
+    $(target.lastChild).append(tagEditor('a', { 'href': sources[0], 'target': '_blank' }));
+    $(target.lastChild.lastChild).append('Primary Source');
 }
 
 function drawTeamCard(target, item, team) {
@@ -87,7 +82,7 @@ function drawPlayerCard(target, cardID, player) {
         }
         return detail;
     }());
-    
+
     $(div).append(tagEditor('span', { 'class': 'card-cover', 'onmousedown': 'makeCardSmaller(this.parentNode)' }));
 }
 
@@ -112,16 +107,12 @@ function makeFrameID(htmlclass, htmlid) {
     return htmlclass + '-frame-' + htmlid;
 }
 
-function tagEditor(tag, attributes, contents) {
-    if (typeof(contents) === 'undefined') {
-        contents = [''];
-    }
-
+function tagEditor(tag, attributes) {
     var out = '<' + tag;
     for (var attribute in attributes) {
         out += ' ' + attribute + '="' + attributes[attribute] +'"';
     }
-    out += '>' + contents.join('') + '</' + tag + '>';
+    out += '></' + tag + '>';
     console.log(out);
     return out;
 }
