@@ -1,5 +1,9 @@
 'use strict';
 
+$(document).ready(function() {
+
+});
+
 var defaultSetting = 'mini';
 
 function main() {
@@ -9,19 +13,13 @@ function main() {
 }
 
 function drawTransferCard() {
-    var content = '',
-        target = 'transfer-stream';
-
-    content +=
-        tagEditor('div', { 'class': 'transfer-card  transfer-card--' + defaultSetting, }, [
-            drawDealInfo(deals[0]),
-            drawTeamCard('team  team--' + defaultSetting, teams[0]),
-            drawPlayerCard(0, players[1]),
-            drawTeamCard('team  team--' + defaultSetting,teams[1]),
-            drawSources(deals[0])
-        ]);
-
-    document.getElementById(target).innerHTML += content;
+    var target = document.getElementById('transfer-stream');
+    $(target).append(tagEditor('div', { 'class': 'transfer-card  transfer-card--' + defaultSetting, }));
+    $(target.lastChild).append(drawDealInfo(deals[0]));
+    $(target.lastChild).append(drawTeamCard('team  team--' + defaultSetting, teams[0]));
+    $(target.lastChild).append(drawPlayerCard(0, players[1]));
+    $(target.lastChild).append(drawTeamCard('team  team--' + defaultSetting,teams[1]));
+    $(target.lastChild).append(drawSources(deals[0]));
 }
 
 function drawDealInfo(deal) {
@@ -152,6 +150,10 @@ function tagEditor(tag, attributes, contents) {
     return out;
 }
 
+//////////////////////////////////
+//  BELOW IS DUMMY FOR TEST     //
+//  To be removed later         //
+//////////////////////////////////
 
 var players = [
         new Player('이창근', '21', 'GK', '1993-08-30', '186', '78', 'https://www.busanipark.com/i_data/player/248_1.jpg'),
