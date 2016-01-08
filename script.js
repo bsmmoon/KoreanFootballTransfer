@@ -62,13 +62,32 @@ function drawTeamCard(target, item, team) {
 function drawPlayerCard(target, cardID, player) {
     var frameID = makeFrameID('card', cardID),
         image = player.image,
-        div;
+        div, subdiv;
     $(target).append(tagEditor('div', { 'class': 'player  player--' + defaultSetting, 'id': frameID }));
     div = target.lastChild;
+
     $(div).append(tagEditor('div', { 'class': 'photo-frame' }));
-    $(div.lastChild).append(tagEditor('img', { 'src': image, 'alt': 'HTML5' }));
+    subdiv = div.lastChild;
+    $(subdiv).append(tagEditor('img', { 'src': image, 'alt': 'HTML5' }));
+
     $(div).append(tagEditor('div', { 'class': 'description-frame', }));
-    $(div.lastChild).append(getPlayerProfile(player));
+    subdiv = div.lastChild;
+    $(subdiv).append(tagEditor('h2', {}));
+    $(subdiv.lastChild).append(player.name);
+    $(subdiv).append(tagEditor('div', {}));
+    $(subdiv.lastChild).append(function() {
+        var detail = '';
+        for (var attribute in player) {
+            if (attribute === 'name' ||
+                attribute === 'image') {
+                continue;
+            }
+            detail += attribute + ': ' + player[attribute];
+            detail += '<br>';
+        }
+        return detail;
+    }());
+    
     $(div).append(tagEditor('span', { 'class': 'card-cover', 'onmousedown': 'makeCardSmaller(this.parentNode)' }));
 }
 
@@ -87,27 +106,6 @@ function makeCardSmaller(card) {
         teamFrom.className = 'team  team--simple';
         teamTo.className = 'team  team--simple';
     }
-}
-
-function getPlayerProfile(player) {
-    var out = tagEditor('h2', {},  [player.name]);
-    out += tagEditor('div', {}, [
-        function() {
-            var detail = '';
-            for (var attribute in player) {
-                if (attribute === 'name' ||
-                    attribute === 'image') {
-                    continue;
-                }
-                detail += attribute + ': ' + player[attribute];
-                detail += '<br>';
-            }
-            return detail;
-        }()
-    ]);
-    console.log(out);
-
-    return out;
 }
 
 function makeFrameID(htmlclass, htmlid) {
