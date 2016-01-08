@@ -16,9 +16,9 @@ function drawTransferCard() {
     var target = document.getElementById('transfer-stream');
     $(target).append(tagEditor('div', { 'class': 'transfer-card  transfer-card--' + defaultSetting, }));
     drawDealInfo(target.lastChild, deals[0]);
-    $(target.lastChild).append(drawTeamCard('team  team--' + defaultSetting, teams[0]));
+    drawTeamCard(target.lastChild, 'team  team--' + defaultSetting, teams[0]);
     $(target.lastChild).append(drawPlayerCard(0, players[1]));
-    $(target.lastChild).append(drawTeamCard('team  team--' + defaultSetting,teams[1]));
+    drawTeamCard(target.lastChild, 'team  team--' + defaultSetting,teams[1]);
     $(target.lastChild).append(drawSources(deals[0]));
 }
 
@@ -57,16 +57,10 @@ function drawSources(deal) {
     return content;
 }
 
-function drawTeamCard(item, team) {
-    var content = '',
-        image = team.image;
-
-    content +=
-        tagEditor('div', { 'class': item }, [
-            tagEditor('img', { 'src': image, 'alt': 'HTML5' })
-        ]);
-
-    return content;
+function drawTeamCard(target, item, team) {
+    var image = team.image;
+    $(target).append(tagEditor('div', { 'class': item }));
+    $(target.lastChild).append(tagEditor('img', { 'src': image, 'alt': 'HTML5' }));
 }
 
 function drawPlayerCard(cardID, player) {
