@@ -17,7 +17,7 @@ function drawTransferCard() {
     $(target).append(tagEditor('div', { 'class': 'transfer-card  transfer-card--' + defaultSetting, }));
     drawDealInfo(target.lastChild, deals[0]);
     drawTeamCard(target.lastChild, 'team  team--' + defaultSetting, teams[0]);
-    $(target.lastChild).append(drawPlayerCard(0, players[1]));
+    drawPlayerCard(target.lastChild, 0, players[1]);
     drawTeamCard(target.lastChild, 'team  team--' + defaultSetting,teams[1]);
     $(target.lastChild).append(drawSources(deals[0]));
 }
@@ -63,23 +63,15 @@ function drawTeamCard(target, item, team) {
     $(target.lastChild).append(tagEditor('img', { 'src': image, 'alt': 'HTML5' }));
 }
 
-function drawPlayerCard(cardID, player) {
-    var content = '',
-        frameID = makeFrameID('card', cardID),
+function drawPlayerCard(target, cardID, player) {
+    var frameID = makeFrameID('card', cardID),
         image = player.image;
-
-    content +=
-        tagEditor('div', { 'class': 'player  player--' + defaultSetting, 'id': frameID }, [
-            tagEditor('div', { 'class': 'photo-frame' }, [
-                tagEditor('img', { 'src': image, 'alt': 'HTML5' })
-            ]),
-            tagEditor('div', { 'class': 'description-frame', }, [
-                getPlayerProfile(player)
-            ]),
-            tagEditor('span', { 'class': 'card-cover', 'onmousedown': 'makeCardSmaller(this.parentNode)' })
-        ]);
-
-    return content;
+    $(target).append(tagEditor('div', { 'class': 'player  player--' + defaultSetting, 'id': frameID }));
+    $(target.lastChild).append(tagEditor('div', { 'class': 'photo-frame' }));
+    $(target.lastChild.lastChild).append(tagEditor('img', { 'src': image, 'alt': 'HTML5' }));
+    $(target.lastChild).append(tagEditor('div', { 'class': 'description-frame', }));
+    $(target.lastChild.lastChild).append(getPlayerProfile(player));
+    $(target.lastChild).append(tagEditor('span', { 'class': 'card-cover', 'onmousedown': 'makeCardSmaller(this.parentNode)' }));
 }
 
 function makeCardSmaller(card) {
